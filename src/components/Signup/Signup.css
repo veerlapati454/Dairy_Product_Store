@@ -1,0 +1,330 @@
+/* ===========================================================
+   SIGNUP PAGE
+   Matches the site's tokens: --pasture, --pasture-dark, --butter,
+   Fraunces (display), IBM Plex Mono (labels/utility).
+=========================================================== */
+.signup-page,
+.signup-page * {
+  box-sizing: border-box;
+}
+
+.signup-page {
+  min-height: 100vh;
+  background: var(--pasture-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 3rem;
+  position: relative;
+}
+
+/* Back to home */
+.signup-back-btn {
+  position: absolute;
+  top: 1.75rem;
+  left: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 253, 247, 0.06);
+  border: 1px solid rgba(255, 253, 247, 0.15);
+  color: #fffdf7;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  padding: 0.6rem 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.signup-back-btn:hover {
+  background: rgba(255, 253, 247, 0.12);
+  transform: translateX(-2px);
+}
+
+/* Card */
+.signup-card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 253, 247, 0.05);
+  border: 1px solid rgba(255, 253, 247, 0.1);
+  border-radius: 1.5rem;
+  padding: 2.75rem 2.25rem;
+  backdrop-filter: blur(6px);
+}
+
+.signup-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signup-head .eyebrow {
+  color: var(--butter);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.signup-head h1 {
+  color: #fffdf7;
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+.signup-head p {
+  color: rgba(255, 253, 247, 0.65);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.signup-field label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 247, 0.55);
+}
+
+.signup-field input[type="text"],
+.signup-field input[type="email"],
+.signup-field input[type="password"] {
+  width: 100%;
+  background: rgba(255, 253, 247, 0.06);
+  border: 1px solid rgba(255, 253, 247, 0.15);
+  border-radius: 0.7rem;
+  padding: 0.75rem 1rem;
+  color: #fffdf7;
+  font-size: 0.92rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.signup-field input::placeholder {
+  color: rgba(255, 253, 247, 0.35);
+}
+
+.signup-field input:focus {
+  outline: none;
+  border-color: var(--butter);
+  background: rgba(255, 253, 247, 0.09);
+}
+
+.signup-field input.has-error {
+  border-color: #e2836b;
+}
+
+.field-error {
+  color: #e2836b;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+/* Password field with single eye toggle */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 2.75rem;
+}
+
+.password-wrapper .eye-toggle {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255, 253, 247, 0.55);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+}
+
+.password-wrapper .eye-toggle:hover {
+  color: var(--butter);
+}
+
+/* Terms checkbox */
+.signup-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.signup-checkbox input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--butter);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.signup-checkbox span {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 253, 247, 0.65);
+}
+
+.signup-checkbox a {
+  color: var(--butter);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.signup-form-message {
+  background: rgba(226, 131, 107, 0.12);
+  border: 1px solid rgba(226, 131, 107, 0.35);
+  color: #f3c9bd;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  margin: 0;
+}
+
+/* Submit */
+.signup-submit {
+  background: var(--butter);
+  color: var(--pasture-dark);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.85rem 1.5rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signup-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.25);
+}
+
+/* Divider */
+.signup-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 2rem 0 1.25rem;
+}
+
+.signup-divider::before,
+.signup-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 253, 247, 0.12);
+}
+
+.signup-divider span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 247, 0.45);
+  white-space: nowrap;
+}
+
+/* Social icons */
+.signup-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.signup-social button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.06);
+  border: 1px solid rgba(255, 253, 247, 0.15);
+  color: #fffdf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.signup-social button:hover {
+  background: var(--butter);
+  border-color: var(--butter);
+  color: var(--pasture-dark);
+  transform: translateY(-2px);
+}
+
+/* Sign in link */
+.signup-signin {
+  text-align: center;
+  margin: 1.75rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 253, 247, 0.6);
+}
+
+.signup-signin button {
+  background: none;
+  border: none;
+  color: var(--butter);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   MOBILE (≤ 480px)
+--------------------------------------------------------- */
+@media (max-width: 480px) {
+  .signup-page {
+    padding: 5.5rem 1rem 2.5rem;
+  }
+
+  .signup-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .signup-head h1 {
+    font-size: 1.6rem;
+  }
+
+  .signup-back-btn {
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.72rem;
+  }
+}

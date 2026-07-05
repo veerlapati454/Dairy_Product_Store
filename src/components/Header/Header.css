@@ -1,0 +1,233 @@
+/* ===========================================================
+   HEADER — crystal liquid-glass nav, overlays the hero image
+=========================================================== */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height-mobile: 3.75rem;
+  --header-height-desktop: 4.75rem;
+  --glass-tint: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-highlight: rgba(255, 255, 255, 0.45);
+  --nav-text: #f7f6f2;
+  --nav-text-hover: #f5a623;
+  --header-bg: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.06) 60%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    var(--glass-tint);
+}
+
+/* The bar itself is the glass surface — this is what fixes the
+   contrast problem. Links no longer sit directly on whatever
+   hero/section color happens to be behind them; they sit on a
+   consistent frosted panel that is always dark-ish + blurred,
+   so a light or near-black text color stays readable everywhere. */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height-mobile);
+  padding: 0 1.4rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  background: var(--header-bg);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 var(--glass-highlight);
+  
+  /* Default light text for dark backgrounds */
+  color: var(--nav-text);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When header is on light backgrounds, add a dark overlay */
+.site-header.light-background {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  color: #1a1a1a;
+}
+
+.site-header.light-background .nav-links .nav-link-btn {
+  color: #1a1a1a;
+  text-shadow: none;
+}
+
+.site-header.light-background .nav-links .nav-link-btn:hover,
+.site-header.light-background .nav-links .nav-link-btn:focus-visible {
+  color: var(--nav-text-hover);
+  text-shadow: none;
+}
+
+.site-header.light-background .hamburger {
+  color: #1a1a1a;
+  filter: none;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    height: var(--header-height-desktop);
+    padding: 0 2.5rem;
+  }
+}
+
+.logo-slot {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.logo-slot img {
+  height: 48px; /* Increased from 32px to 48px for mobile */
+  width: auto;
+  border-radius: 0.35rem;
+  pointer-events: none;
+  /* Force logo to be black at all times */
+  filter: brightness(0) invert(0) !important;
+  -webkit-filter: brightness(0) invert(0) !important;
+}
+
+/* Mobile-specific logo size */
+@media (max-width: 480px) {
+  .logo-slot img {
+    height: 56px; /* Even larger on very small screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-slot img {
+    height: 84px;
+  }
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-links .nav-link-btn {
+  color: var(--nav-text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  font-family: inherit;
+}
+.nav-links .nav-link-btn:hover,
+.nav-links .nav-link-btn:focus-visible {
+  color: var(--nav-text-hover);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* optional active-link treatment (e.g. via NavLink's isActive prop) */
+.nav-links .nav-link-btn.active {
+  color: var(--nav-text-hover);
+  border-bottom: 1px solid var(--nav-text-hover);
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--nav-text);
+  display: inline-flex;
+  cursor: pointer;
+  padding: 0.5rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.mobile-menu-glass {
+  position: fixed;
+  top: 4rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem 0;
+  border-radius: 1rem;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    ),
+    rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+@media (min-width: 768px) {
+  .mobile-menu-glass {
+    display: none;
+  }
+}
+.mobile-menu-glass .mobile-nav-btn {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  transition: color 0.3s ease;
+  width: auto;
+}
+.mobile-menu-glass .mobile-nav-btn:hover {
+  color: var(--nav-text-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header * {
+    transition: none !important;
+  }
+}

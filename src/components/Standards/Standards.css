@@ -1,0 +1,96 @@
+/* ===========================================================
+   VALUES — section id="standards"
+   Pairs with shared.css for tokens, .eyebrow, .section-head,
+   .pour-divider.
+
+   Note: the stats strip and image banner in Values.jsx are
+   styled inline (not via classes here) so they render reliably
+   regardless of CSS load/cache order. This file only covers the
+   section shell, heading, and the icon value cards.
+=========================================================== */
+.values,
+.values * {
+  box-sizing: border-box;
+}
+
+.values {
+  background: var(--pasture-dark);
+  padding: 6rem 1.5rem;
+  scroll-margin-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.values .section-head.light {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.values .section-head.light h2 {
+  color: #fffdf7;
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.values .section-subtitle.light {
+  color: rgba(255, 253, 247, 0.65);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0.5rem auto 0;
+}
+
+.values-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  position: relative;
+  z-index: 2;
+}
+
+.value-card {
+  color: #fffdf7;
+  text-align: left;
+}
+
+.value-card svg {
+  color: var(--butter);
+  margin-bottom: 0.9rem;
+}
+
+.value-card h4 {
+  font-family: "Fraunces", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.value-card p {
+  font-size: 0.85rem;
+  color: rgba(255, 253, 247, 0.65);
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------
+   MOBILE (≤ 480px)
+--------------------------------------------------------- */
+@media (max-width: 480px) {
+  .values {
+    padding: 5rem 1.25rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .values .section-head.light h2 {
+    font-size: 1.9rem;
+  }
+}
