@@ -7,11 +7,12 @@
 =========================================================== */
 .dairy-case {
   background: var(--paper);
-  padding: 5rem 1.5rem 6rem;
+  padding: 7rem 1.5rem 6rem; /* Increased top padding from 5rem to 7rem */
+  scroll-margin-top: 96px; /* Added scroll margin for anchor links */
 }
 @media (min-width: 768px) {
   .dairy-case {
-    padding: 6rem 3rem 7rem;
+    padding: 8rem 3rem 7rem; /* Increased top padding for desktop too */
   }
 }
 
@@ -19,6 +20,7 @@
   max-width: 1180px;
   margin: 0 auto 2.5rem;
   text-align: center;
+  padding-top: 0.5rem; /* Added extra padding at top */
 }
 
 .dairy-case .section-head .eyebrow {
@@ -612,15 +614,17 @@
 }
 
 /* ---------------------------------------------------------
-   Very small screens (≤ 380px)
+   Very small screens (≤ 380px) - Updated with more top padding
 --------------------------------------------------------- */
 @media (max-width: 380px) {
   .dairy-case {
-    padding: 2.5rem 0.75rem 3rem;
+    padding: 6rem 0.75rem 3rem; /* Increased top padding */
+    scroll-margin-top: 120px; /* Increased for mobile */
   }
   
   .dairy-case .section-head {
     margin-bottom: 1rem;
+    padding-top: 1rem; /* Extra padding on mobile */
   }
   
   .filter-btn {
